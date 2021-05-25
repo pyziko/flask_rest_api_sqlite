@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
@@ -10,6 +12,8 @@ app = Flask(__name__)
 app.secret_key = 'pyziko'
 api = Api(app)
 
+# todo INFO: check bookmark :PYTHON/FLASK/Flask-JWT CONFIGURATION
+# app.config['JWT_EXPIRATION_DELTA'] = timedelta(weeks=1)
 jwt = JWT(app, authenticate, identity)
 
 api.add_resource(Item, '/item/<string:name>')
